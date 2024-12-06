@@ -30,7 +30,7 @@ function Navbar() {
                     <div className={`md:hidden ${isOpen ? 'slide-in' : 'slide-out'}`}>
                         {isOpen && (
                             <nav className="flex flex-col items-center space-y-4 py-4">
-                            <Link className="text-blue-900 hover:text-blue-700" to={"/app"}>Home</Link>
+                            <Link className="text-blue-900 hover:text-blue-700" to={"/"}>Home</Link>
                             <Link className="text-blue-900 hover:text-blue-700" to={"/dashboard"}>Mentor</Link>
                             <Link className="text-blue-900 hover:text-blue-700" to={"/mentee"}>Mentee</Link>
                             <Link className="text-blue-900 hover:text-blue-700" to={"/blogsection"}>Blog</Link>

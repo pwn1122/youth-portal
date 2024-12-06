@@ -4,7 +4,7 @@ import Footer from './Footer';
 
 function Mentee() {
 
-    const mentors = [
+    const users = [
         {
             name: "Ruby Perrin",
             title: "Digital Marketer",
@@ -56,13 +56,15 @@ function Mentee() {
     <div>
           <Navbar/>
            
-                    <div className="flex flex-col md:flex-row justify-between items-center mb-4 bg-yellow-50 p-6">
-                        <div className="mb-2 md:mb-0">
-                            <a href="#" className="text-gray-600">Home</a> / <a href="#" className="text-gray-600">Search</a>
-                         <h1 className="text-2xl font-bold mb-4">2245 matches found for : Mentors In Florida</h1>
+          <div className="container mx-auto p-4">
+                    <nav className="flex items-center justify-between py-4">
+                        <div className="flex items-center space-x-2">
+                            <a href="#" className="text-gray-600">Home</a>
+                            <span className="text-gray-400">/</span>
+                            <a href="#" className="text-gray-600">Search</a>
                         </div>
-                        <div className="flex items-center">
-                            <span className="mr-2">Sort by</span>
+                        <div className="flex items-center space-x-2">
+                            <span className="text-gray-600">Sort by</span>
                             <select className="border border-gray-300 rounded p-2">
                                 <option>Select</option>
                                 <option>Rating</option>
@@ -71,14 +73,14 @@ function Mentee() {
                                 <option>Free</option>
                             </select>
                         </div>
-                    </div>
-           <div className="container mx-auto p-4">
-                    <div className="flex flex-col lg:flex-row h-screen">
-                        <div className="w-full lg:w-1/4 p-4 bg-white rounded shadow mb-4 lg:mb-0 sticky top-0">
+                    </nav>
+                    <h1 className="text-2xl font-bold mb-4">2245 matches found for : Mentors In Florida</h1>
+                    <div className="flex flex-col lg:flex-row">
+                        <aside className="w-full lg:w-1/4 p-4 bg-white rounded shadow mb-4 lg:mb-0">
                             <h2 className="text-xl font-bold mb-4">Search Filter</h2>
                             <div className="mb-4">
                                 <label className="block mb-2">Select Date</label>
-                                <input type="date" className="border border-gray-300 rounded p-2 w-full" />
+                                <input type="date" className="w-full border border-gray-300 rounded p-2" />
                             </div>
                             <div className="mb-4">
                                 <h3 className="font-bold mb-2">Gender</h3>
@@ -106,46 +108,46 @@ function Mentee() {
                                     <label htmlFor="computer-programming">Computer Programming</label>
                                 </div>
                                 <div className="flex items-center mb-2">
-                                    <input type="checkbox" id="asp-net" className="mr-2" />
-                                    <label htmlFor="asp-net">ASP.NET, Computer Gaming</label>
+                                    <input type="checkbox" id="aspnet" className="mr-2" />
+                                    <label htmlFor="aspnet">ASP.NET, Computer Gaming</label>
                                 </div>
                                 <div className="flex items-center mb-2">
                                     <input type="checkbox" id="html-css" className="mr-2" />
                                     <label htmlFor="html-css">HTML, Css</label>
                                 </div>
                                 <div className="flex items-center">
-                                    <input type="checkbox" id="vb-net" className="mr-2" />
-                                    <label htmlFor="vb-net">VB, VB.net</label>
+                                    <input type="checkbox" id="vbnet" className="mr-2" />
+                                    <label htmlFor="vbnet">VB, VB.net</label>
                                 </div>
                             </div>
-                            <button className="bg-blue-500 text-white rounded p-2 w-full">Search</button>
-                        </div>
-                        <div className="w-full lg:w-3/4 p-4 overflow-y-auto">
-                            {mentors.map((mentor, index) => (
-                                <div key={index} className="bg-white rounded shadow p-4 mb-4 flex flex-col md:flex-row">
-                                    <img src={mentor.image} alt={`Profile of ${mentor.name}`} className="rounded-full w-24 h-24 mb-4 md:mb-0 md:mr-4" />
-                                    <div className="flex-grow">
-                                        <h2 className="text-xl font-bold">{mentor.name}</h2>
-                                        <p className="text-gray-600">{mentor.title}</p>
+                            <button className="w-full bg-blue-500 text-white py-2 rounded">Search</button>
+                        </aside>
+                        <main className="w-full lg:w-3/4 p-4 lg:overflow-y-auto lg:h-screen">
+                            {users.map((user, index) => (
+                                <div key={index} className="bg-white rounded shadow p-4 mb-4 flex">
+                                    <img src={user.image} alt={`Profile of ${user.name}`} className="w-24 h-24 rounded-full mr-4" />
+                                    <div className="flex-1">
+                                        <h2 className="text-xl font-bold">{user.name}</h2>
+                                        <p className="text-gray-600">{user.role}</p>
                                         <div className="flex items-center mb-2">
-                                            {[...Array(mentor.rating)].map((_, i) => (
-                                                <span key={i} className="text-yellow-500"><i className="fas fa-star"></i></span>
+                                            {[...Array(5)].map((star, i) => (
+                                                <span key={i} className={i < user.rating ? "text-yellow-500" : "text-gray-300"}>
+                                                    <i className="fas fa-star"></i>
+                                                </span>
                                             ))}
-                                            {[...Array(5 - mentor.rating)].map((_, i) => (
-                                                <span key={i} className="text-gray-300"><i className="fas fa-star"></i></span>
-                                            ))}
-                                            <span className="ml-2 text-gray-600">({mentor.feedback})</span>
+                                            <span className="ml-2 text-gray-600">({user.feedback})</span>
                                         </div>
-                                        <p className="text-gray-600"><i className="fas fa-map-marker-alt"></i> {mentor.location}</p>
+                                        <p className="text-gray-600"><i className="fas fa-map-marker-alt"></i> {user.location}</p>
                                     </div>
                                     <div className="text-right">
-                                        <p className="text-gray-600 mb-2"><i className="fas fa-comments"></i> {mentor.feedback} Feedback</p>
-                                        <p className="text-gray-600 mb-2"><i className="fas fa-dollar-sign"></i> {mentor.price}</p>
-                                        <button className="bg-blue-500 text-white rounded p-2">BOOK APPOINTMENT</button>
+                                        <p className="text-gray-600"><i className="fas fa-comments"></i> {user.feedback} Feedback</p>
+                                        <p className="text-gray-600"><i className="fas fa-map-marker-alt"></i> {user.location}</p>
+                                        <p className="text-gray-600"><i className="fas fa-dollar-sign"></i> {user.price}</p>
+                                        <button className="bg-blue-500 text-white py-2 px-4 rounded">BOOK APPOINTMENT</button>
                                     </div>
                                 </div>
                             ))}
-                        </div>
+                        </main>
                     </div>
                 </div>
                 <Footer/>

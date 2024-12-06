@@ -9,7 +9,7 @@ function Experience() {
     const [satisfaction, setSatisfaction] = useState(0);
 
     useEffect(() => {
-        const interval = 50; // Interval in milliseconds
+        const interval = 50;
         const targetMentors = 1500;
         const targetClients = 600;
         const targetAppointments = 124;
